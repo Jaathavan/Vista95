@@ -6,7 +6,7 @@ import java.io.*;
 
 public class Player {
     private int x,y;
-    private int xa = 1;
+    private int xa = 0;
     private int ya = 0;
 
     private boolean left = false, right = false, space = false;
@@ -17,7 +17,7 @@ public class Player {
         this.x = 200;
         this.y = 200;
         try {
-            player = ImageIO.read(new File("resources/Balmer/ideal_1.png"));
+            player = ImageIO.read(new File("src/resources/Balmer/ideal_1.png"));
         } catch (IOException e)
         {
             System.out.println("No Image");
@@ -30,7 +30,7 @@ public class Player {
 
     public void setPlayer(String src) {
         try {
-            player = ImageIO.read(new File("resources/Balmer/" + src));
+            player = ImageIO.read(new File("src/resources/Balmer/" + src));
         } catch (IOException e)
         {
             System.out.println("No Image");
@@ -40,13 +40,13 @@ public class Player {
     public void keyPressed(KeyEvent e) {
 		// This checks to see which key was pressed, and then sets the appropriate
 		// Boolean to true
-		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+		if (e.getKeyCode() == KeyEvent.VK_A) {
 			left = true;
 		}
-		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+		if (e.getKeyCode() == KeyEvent.VK_D) {
 			right = true;
 		}
-		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+		if (e.getKeyCode() == KeyEvent.VK_W) {
 			space = true;
 		}
 	}
@@ -54,16 +54,16 @@ public class Player {
 	public void keyReleased(KeyEvent e) {
 		// When the key is released, set the Boolean to false, and change
 		// acceleration to 0
-		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+		if (e.getKeyCode() == KeyEvent.VK_A) {
 			left = false;
 			xa = 0;
 		}
-		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+		if (e.getKeyCode() == KeyEvent.VK_D) {
 			right = false;
 			xa = 0;
 		}
 
-		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+		if (e.getKeyCode() == KeyEvent.VK_W) {
 			space = false;
 		}
 	}
@@ -86,7 +86,7 @@ public class Player {
             setPlayer("walking_1.png");
             g.drawImage(player, x, y, null);
         }
-        if (left) {
+        else if (left) {
             setPlayer("walking_1.png");
             g.drawImage(player, x + player.getWidth(), y, -player.getWidth(), player.getHeight(), null);
         } else {
