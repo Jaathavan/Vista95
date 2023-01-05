@@ -4,34 +4,34 @@ import java.awt.image.BufferedImage;
 import javax.imageio.*;
 import java.io.*;
 
-public class Player {
+public class Player extends Canvas {
     private int x,y;
     private int xa = 0;
     private int ya = 0;
 
     private boolean left = false, right = false, space = false;
-
-    private BufferedImage player = null;
+    Toolkit t = Toolkit.getDefaultToolkit();
+    private Image player = null;
 
     public Player() {
         this.x = 200;
         this.y = 200;
         try {
-            player = ImageIO.read(new File("src/resources/Balmer/ideal_1.png"));
-        } catch (IOException e)
+            player = t.getImage("src/resources/Balmer/ideal.gif");
+        } catch (Error e)
         {
             System.out.println("No Image");
         }
     }
     
-    public BufferedImage getPlayer() {
+    public Image getPlayer() {
         return player;
     }
 
     public void setPlayer(String src) {
         try {
-            player = ImageIO.read(new File("src/resources/Balmer/" + src));
-        } catch (IOException e)
+            player = t.getImage("src/resources/Balmer/" + src);
+        } catch (Error e)
         {
             System.out.println("No Image");
         }
@@ -83,14 +83,14 @@ public class Player {
 
     public void paint(Graphics g) {
         if (right) {
-            setPlayer("walking_1.png");
+            setPlayer("walking.gif");
             g.drawImage(player, x, y, null);
         }
         else if (left) {
-            setPlayer("walking_1.png");
-            g.drawImage(player, x + player.getWidth(), y, -player.getWidth(), player.getHeight(), null);
+            setPlayer("walking.gif");
+            g.drawImage(player, x + 83, y, -83, 132, null);
         } else {
-            setPlayer("ideal_1.png");
+            setPlayer("ideal.gif");
             g.drawImage(player, x, y, null);
         }       
     }
