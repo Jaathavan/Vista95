@@ -73,7 +73,7 @@ public class Player extends Canvas {
 		if (right) {
 			xa = 2;
 		}
-		if (left) {
+		else if (left) {
 			xa = -2;
 		}
 
