@@ -2,8 +2,11 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 public class Vista95 extends JPanel {
-    private Player p = new Player();
-	private Enemy e = new Enemy(200, 200, 0, 100, 300);
+
+	private Player p = new Player();
+	private Enemy e = new Enemy(200, 200, 0, 100);
+	private Level l = new Level();
+
 	public Vista95() {
 
 		addKeyListener(new KeyListener() {
@@ -28,8 +31,9 @@ public class Vista95 extends JPanel {
 	}
 
 	public void move() {
-		p.move();
+		// l.move(p.getX(), p.getXa());
 		e.move();
+		p.move();
 	}
 
 	@Override
@@ -37,9 +41,12 @@ public class Vista95 extends JPanel {
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		l.paint(g2d);
 		
-		p.paint(g2d);
 		e.paint(g2d);
+		p.paint(g2d);
+		
+		
 	}
 
 	public static void main(String[] args) throws InterruptedException {

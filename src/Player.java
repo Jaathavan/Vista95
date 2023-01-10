@@ -28,6 +28,14 @@ public class Player extends Canvas {
         return player;
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getXa() {
+        return xa;
+    }
+    
     public void setPlayer(String src) {
         try {
             player = t.getImage("src/resources/Balmer/" + src);

@@ -14,13 +14,13 @@ public class Enemy {
 
     //width and height of virus is 120px
 
-    //type is 0-2, 0 is red, 1 is blue, 2 is yellow, rangeStart and rangeEnd is for the red to know where to move between
-    public Enemy(int xx, int yy, int ttype, int rrangeStart, int rrangeEnd) {
+    //type is 0-2, 0 is red, 1 is blue, 2 is yellow,length is the range of motion
+    public Enemy(int xx, int yy, int ttype, int length) {
         x = xx;
         y = yy-70;
         type = ttype;
-        rangeStart = rrangeStart;
-        rangeEnd = rrangeEnd;
+        rangeStart = x;
+        rangeEnd = x+length;
         try {
             redVirus = t.getImage("src/resources/Viruses/Red_Virus.gif");
             blueVirus = t.getImage("src/resources/Viruses/Blue_Virus.gif");
