@@ -9,7 +9,7 @@ public class Player extends Canvas {
     private int xa = 0;
     private int ya = 0;
 
-    private boolean left = false, right = false, space = false;
+    private boolean left = false, right = false, up = false;
     Toolkit t = Toolkit.getDefaultToolkit();
     private Image player = null;
 
@@ -47,7 +47,7 @@ public class Player extends Canvas {
 			right = true;
 		}
 		if (e.getKeyCode() == KeyEvent.VK_W) {
-			space = true;
+			up = true;
 		}
 	}
 
@@ -64,7 +64,7 @@ public class Player extends Canvas {
 		}
 
 		if (e.getKeyCode() == KeyEvent.VK_W) {
-			space = false;
+			up = false;
 		}
 	}
 

@@ -3,7 +3,7 @@ import javax.swing.*;
 import java.awt.event.*;
 public class Vista95 extends JPanel {
     private Player p = new Player();
-	
+	private Enemy e = new Enemy(200, 200, 0, 100, 300);
 	public Vista95() {
 
 		addKeyListener(new KeyListener() {
@@ -29,6 +29,7 @@ public class Vista95 extends JPanel {
 
 	public void move() {
 		p.move();
+		e.move();
 	}
 
 	@Override
@@ -38,6 +39,7 @@ public class Vista95 extends JPanel {
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		
 		p.paint(g2d);
+		e.paint(g2d);
 	}
 
 	public static void main(String[] args) throws InterruptedException {
