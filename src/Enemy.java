@@ -41,25 +41,22 @@ public class Enemy {
 
     public void move() {
         if (isAlive) {
-            if (type == 0) {
-                if (x + xa > rangeEnd || x + xa < rangeStart)
-                    xa *= -1;
-                x += xa;
-            }
-            if (type == 1) {
-            }
-            if (type == 2) {
-                //bx--;
-            }
+            if (x + xa > rangeEnd || x + xa < rangeStart)
+                xa *= -1;
+            x += xa;
         }
     }
 
     public void moveLeft(int speed) {
-        x+=speed;
+        x += speed;
+        rangeStart += speed;
+        rangeEnd += speed;
     }
 
     public void moveRight(int speed) {
-        x-=speed;
+        x -= speed;
+        rangeStart -= speed;
+        rangeEnd -= speed;
     }
 
     public void die() {
@@ -76,9 +73,12 @@ public class Enemy {
 
     public void paint(Graphics g) {
         if (isAlive) {
-            if (type == 0) g.drawImage(redVirus, x, y, null);
-            if (type == 1) g.drawImage(blueVirus, x, y, null);
-            if (type == 2) g.drawImage(yellowVirus, x, y, null);
+            if (type == 0)
+                g.drawImage(redVirus, x, y, null);
+            if (type == 1)
+                g.drawImage(blueVirus, x, y, null);
+            if (type == 2)
+                g.drawImage(yellowVirus, x, y, null);
         }
         g.drawRect(x, y, 70, 70);
     }

@@ -75,10 +75,10 @@ public class GameScreen extends JPanel {
 			bg.move(steve);
 			if (bg.stage == 3 || bg.stage == 4 || bg.stage == 5)
 				steve.move(bg);
-			// checkCollision();
-			// for (Enemy e : bg.elist) {
-			// e.move();
-			// }
+			checkCollision();
+			for (Enemy e : bg.elist) {
+				e.move();
+			}
 		}
 	}
 
@@ -90,9 +90,9 @@ public class GameScreen extends JPanel {
 
 		if (bg.stage == 3 || bg.stage == 4 || bg.stage == 5) {
 			steve.paint(g2d);
-			// for (Enemy e : bg.elist) {
-			// e.paint(g2d);
-			// }
+			for (Enemy e : bg.elist) {
+				e.paint(g2d);
+			}
 			if (steve.x >= 1020) {
 				bg.levelUp(g2d);
 				nextLevel = true;
