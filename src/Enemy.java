@@ -5,7 +5,7 @@ import java.io.*;
 import java.awt.Rectangle;
 
 public class Enemy {
-    private int x, y, type, rangeStart, rangeEnd;
+    private int x, y, type, rangeStart, rangeEnd, bx;
     private int xa = 1;
 
     Toolkit t = Toolkit.getDefaultToolkit();
@@ -18,6 +18,7 @@ public class Enemy {
     // type is 0-2, 0 is red, 1 is blue, 2 is yellow, length is the range of motion
     public Enemy(int xx, int yy, int ttype, int length) {
         x = xx;
+        bx = xx;
         y = yy - 70;
         type = ttype;
         rangeStart = x;
@@ -48,8 +49,17 @@ public class Enemy {
             if (type == 1) {
             }
             if (type == 2) {
+                //bx--;
             }
         }
+    }
+
+    public void moveLeft(int speed) {
+        x+=speed;
+    }
+
+    public void moveRight(int speed) {
+        x-=speed;
     }
 
     public void die() {
@@ -66,7 +76,9 @@ public class Enemy {
 
     public void paint(Graphics g) {
         if (isAlive) {
-            g.drawImage(redVirus, x, y, null);
+            if (type == 0) g.drawImage(redVirus, x, y, null);
+            if (type == 1) g.drawImage(blueVirus, x, y, null);
+            if (type == 2) g.drawImage(yellowVirus, x, y, null);
         }
         g.drawRect(x, y, 70, 70);
     }

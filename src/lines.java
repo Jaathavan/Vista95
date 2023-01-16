@@ -22,9 +22,8 @@ public class lines {
     }
 
     public boolean collision(character c) {
-        return ((((this.x + this.l) > c.x) && (this.x < (c.x + c.width)))
-                && (this.y <= (c.y + c.height)));
-        // && ((this.y <= c.y+c.height) && (c.y == this.y-200)));
+        return ((((this.x + this.l) > c.x + 10) && (this.x < (c.x + 63)))
+                && ((this.y <= (c.y + c.height)) && (this.y + 4 >= (c.y + c.height))));
     }
 
     public void paint(Graphics2D g) {

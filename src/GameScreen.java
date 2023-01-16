@@ -9,14 +9,13 @@ public class GameScreen extends JPanel {
 	private background bg = new background(1);
 	lines l = new lines(0, 800, 5100);
 	character steve = new character(3);
-	// Enemy[] list = new Enemy[3];
-	// {
-	// list[0] = new Enemy(300, 572, 0, 100);
-	// list[1] = new Enemy(400, 572, 0, 100);
-	// list[2] = new Enemy(500, 572, 0, 100);
-	// }
+
 	boolean restart = false;
 	boolean nextLevel = true;
+
+	// checkCollision variables
+	boolean isBack = false;// can only lose one life per collision
+	int temp = 0;// holds index of enemy that player collided with
 
 	public GameScreen() {
 		addKeyListener(new KeyListener() {
@@ -51,9 +50,6 @@ public class GameScreen extends JPanel {
 		setFocusable(true);
 	}
 
-	boolean isBack = false;// can only lose one life per collision
-	int temp = 0;// holds index of enemy that player collided with
-
 	public void checkCollision() {
 		Rectangle pr = steve.getBounds();
 		int count = 0;
@@ -79,10 +75,10 @@ public class GameScreen extends JPanel {
 			bg.move(steve);
 			if (bg.stage == 3 || bg.stage == 4 || bg.stage == 5)
 				steve.move(bg);
-			checkCollision();
-			for (Enemy e : bg.elist) {
-				e.move();
-			}
+			// checkCollision();
+			// for (Enemy e : bg.elist) {
+			// e.move();
+			// }
 		}
 	}
 
@@ -94,9 +90,9 @@ public class GameScreen extends JPanel {
 
 		if (bg.stage == 3 || bg.stage == 4 || bg.stage == 5) {
 			steve.paint(g2d);
-			for (Enemy e : bg.elist) {
-				e.paint(g2d);
-			}
+			// for (Enemy e : bg.elist) {
+			// e.paint(g2d);
+			// }
 			if (steve.x >= 1020) {
 				bg.levelUp(g2d);
 				nextLevel = true;

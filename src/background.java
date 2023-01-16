@@ -20,11 +20,26 @@ public class background {
 	private BufferedImage gameOver = null;
 	private BufferedImage levelUp = null;
 
-	Enemy[] elist = new Enemy[3];
+	Enemy[] elist = new Enemy[18];
 	{
-		elist[0] = new Enemy(300, 572, 0, 100);
-		elist[1] = new Enemy(400, 572, 0, 100);
-		elist[2] = new Enemy(500, 572, 0, 100);
+		elist[0] = new Enemy(0, 572, 0, 5100-70);
+		elist[1] = new Enemy(0, 572, 0 ,2174-70);
+		elist[2] = new Enemy(623, 475, 0, 326-70);
+		elist[3] = new Enemy(756, 379,0,  326-70);
+		elist[4] = new Enemy(1278, 343, 0, 160-70);
+		elist[5] = new Enemy(1559, 479, 0, 272-70);
+		elist[6] = new Enemy(2321, 572, 0, 916-70);
+		elist[7] = new Enemy(2435, 515, 0, 117-70);
+		elist[8] = new Enemy(2554, 435, 0, 304-70);
+		elist[9] = new Enemy(2725, 362, 0, 369-70);
+		elist[10] = new Enemy(3373, 572, 0, 850-70);
+		elist[11] = new Enemy(3373, 468, 0, 304-70);
+		elist[12] = new Enemy(3677, 517, 0, 103-70);
+		elist[13] = new Enemy(3875, 444, 0, 160-70);
+		elist[14] = new Enemy(4190, 392, 0, 160-70);
+		elist[15] = new Enemy(4419, 572, 0, 682-70);
+		elist[16] = new Enemy(4458, 468, 0, 302-70);
+		elist[17] = new Enemy(4627, 402, 0, 302-70);
 	}
 
 	LineList list = new LineList();
@@ -110,10 +125,16 @@ public class background {
 		if (c.left && !margin && this.x < 0) {
 			x += speed;
 			list.moveLeft(this.speed);
+			for (Enemy e : elist) {
+				e.moveLeft(this.speed);
+			}
 		}
 		if (c.right && !margin && this.x + this.width > 1020) {
 			x -= speed;
 			list.moveRight(this.speed);
+			for (Enemy e : elist) {
+				e.moveRight(this.speed);
+			}
 		}
 	}
 
@@ -122,10 +143,16 @@ public class background {
 		if (left) {
 			x += speed;
 			list.moveLeft(this.speed);
+			for (Enemy e : elist) {
+				e.moveLeft(this.speed);
+			}
 		}
 		if (right) {
 			x -= speed;
 			list.moveRight(this.speed);
+			for (Enemy e : elist) {
+				e.moveRight(this.speed);
+			}
 		}
 	}
 

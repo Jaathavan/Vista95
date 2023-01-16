@@ -22,7 +22,7 @@ public class character {
     private BufferedImage img = null;
 
     int x = 50, y = 100, width = 95, height = 130;
-    int xa = 10;
+    int xa = 3;
     // int baseY = 200;
     boolean inMargin = true;
     boolean left = false, right = false, up = false;;
@@ -105,7 +105,7 @@ public class character {
     public boolean move(background b) {
 
         if (isAlive) {
-            gravity = !b.list.frontCollision(this);
+            gravity = !b.list.collision(this);
             if (!gravity)
                 isGround = true;
             // once character touches ground they can jump
@@ -126,7 +126,7 @@ public class character {
                 y += 4;
             }
             if (up && isGround) {// prevents doubleJump/flying
-                if (jump < 200) {
+                if (jump < 150) {
                     y -= 9;
                     jump += 5;
                 } else {
@@ -191,12 +191,14 @@ public class character {
 
         if (gravity) {
             g.setColor(Color.RED);
-            g.drawRect(x, y, width, height);
+            // g.drawRect(x,y,width,height);
         }
         for (int i = 1; i <= hearts; i++) {
             g.drawImage(heart, -20 + (i * 50), 35, 40, 40, null);
         }
-        g.drawRect(x + 10, y, 63, 132);
+        // g.drawRect(x+10, y, 63, height);
+        // g.drawLine(x-10, y+height, x+width+10, y+height);
+        // System.out.println(y+height);
 
     }
 }
